@@ -14,7 +14,12 @@ const PORT = process.env.PORT || 7860
 const app = express()
 
 //middleware
-app.use(cors())
+app.use(cors(
+  {
+  origin: "http://localhost:5173",
+  credentials: true
+}
+))
 app.use(express.json())
 
 //Routes
@@ -23,6 +28,7 @@ app.use("/api/product", productRouter)
 
 
 app.listen(PORT, ()=>{
-    console.log(`Server is running on PORT: ${process.env.PORT}` )
+    console.log(`Server is running on http://localhost:${PORT}`);
+    console.log(`Server is running on PORT: ${process.env.PORT}`)
 })
 
