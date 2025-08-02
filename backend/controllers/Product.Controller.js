@@ -4,7 +4,8 @@ import Product from "../models/Product.Model.js";
 
 export const createProduct = async (req, res) => {
     try {
-        const { name, description, price, image, category, stock } = req.body;
+        const { name, description, price, category, stock } = req.body;
+        const image = req.file? req.file.path : null;
 
         if (!name || !description || !price || !image || !category || !stock) {
             return res.status(400).json({ message: "All the field are required..." })

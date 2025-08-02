@@ -22,6 +22,9 @@ app.use(cors(
 ))
 app.use(express.json())
 
+// Serve image folder
+app.use("/uploadProductImges", express.static("uploadProductImges"));
+
 //Routes
 app.use("/api/users", userRouter)
 app.use("/api/product", productRouter)
@@ -29,6 +32,5 @@ app.use("/api/product", productRouter)
 
 app.listen(PORT, ()=>{
     console.log(`Server is running on http://localhost:${PORT}`);
-    console.log(`Server is running on PORT: ${process.env.PORT}`)
+    // console.log(`Server is running on PORT: ${process.env.PORT}`)
 })
-
